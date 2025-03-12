@@ -1,0 +1,13 @@
+[dependencies]
+
+[package]
+  cjc-version = "0.53.18"
+  compile-option = ""
+  description = "tabulate4cj"
+  link-option = ""
+  name = "tabulate4cj"
+  output-type = "static"
+  src-dir = ""
+  target-dir = ""
+  version = "1.0.0"
+  package-configuration = {}
