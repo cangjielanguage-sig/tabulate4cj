@@ -1,4 +1,9 @@
 .cache/
 .vscode/
 target/
+output/
+cov_output/
 cjpm.lock
+*.macrocall
+*.gcno
+*.gcda
