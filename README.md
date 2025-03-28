@@ -61,7 +61,7 @@ tabulate4cj
 
 ### 接口说明
 
-主要类和函数接口说明如下，详见 [API](https://gitcode.com/Fufish_SKP/tabulate4cj/blob/master/doc/feature_api.md)
+主要类和函数接口说明如下，详见 [API](./doc/feature_api.md)
 
 
 ## 使用说明
@@ -262,7 +262,7 @@ Cangjie Version: 0.53.18
 
 ## 开源协议
 
-本项目基于 [Apache License 2.0](https://gitcode.com/Cangjie-SIG/stats4cj/blob/main/LICENSE) ，请自由的享受和参与开源。
+本项目基于 [Apache License 2.0](./LICENSE) ，请自由的享受和参与开源。
 
 ## 参与贡献
 
