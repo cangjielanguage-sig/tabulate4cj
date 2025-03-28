@@ -80,8 +80,8 @@ tabulate4cj
 Windows/Linux 编译：
 
 ```shell
-cpm update
-cpm build
+cjpm update
+cjpm build
 ```
 
 ### 功能示例
