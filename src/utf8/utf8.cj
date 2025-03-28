@@ -4,16 +4,16 @@ import std.collection.*
 import std.io.*
 
 public const RuneError = r'\u{FFFD}' // the "error" Rune or "Unicode replacement character"
-const RuneSelf = 0x80 // characters below RuneSelf are represented as themselves in a single byte.
-const MaxRune = r'\u{10FFFF}' // Maximum valid Unicode code point.
-const UTFMax = 4 // maximum number of bytes of a UTF-8 encoded Unicode character.
+// const RuneSelf = 0x80 // characters below RuneSelf are represented as themselves in a single byte.
+// const MaxRune = r'\u{10FFFF}' // Maximum valid Unicode code point.
+// const UTFMax = 4 // maximum number of bytes of a UTF-8 encoded Unicode character.
 
-const t1: UInt8 = 0b00000000
-const tx: UInt8 = 0b10000000
-const t2: UInt8 = 0b11000000
-const t3: UInt8 = 0b11100000
-const t4: UInt8 = 0b11110000
-const t5: UInt8 = 0b11111000
+// const t1: UInt8 = 0b00000000
+// const tx: UInt8 = 0b10000000
+// const t2: UInt8 = 0b11000000
+// const t3: UInt8 = 0b11100000
+// const t4: UInt8 = 0b11110000
+// const t5: UInt8 = 0b11111000
 const maskx: UInt32 = 0b00111111
 const mask2: UInt32 = 0b00011111
 const mask3: UInt32 = 0b00001111
