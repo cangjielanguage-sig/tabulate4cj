@@ -479,7 +479,7 @@ main() {
 
 如果有特殊需求可以手动实例化Condition类设置判断规则，并且调用其中的成员函数。
 
-```
+```cangjie
 /**
 * 字符宽度判断类，存储了宽度判断规则
 */
@@ -511,7 +511,7 @@ public func stringWidth(s: String): Int64
 
 示例代码如下：
 
-```
+```cangjie
 // API Demo 7
 import tabulate4cj.runewidth.*
 
@@ -557,7 +557,7 @@ public func truncateLeft(s: String, w: Int64, prefix: String): String
 
 示例代码如下：
 
-```
+```cangjie
 // API Demo 8
 import tabulate4cj.runewidth.*
 
@@ -594,7 +594,7 @@ public func wrap(s: String, w: Int64): String
 
 示例代码如下：
 
-```
+```cangjie
 // API Demo 9
 import tabulate4cj.runewidth.*
 
@@ -645,7 +645,7 @@ public func fillRight(s: String, w: Int64): String
 
 示例代码如下：
 
-```
+```cangjie
 // API Demo 10
 import tabulate4cj.runewidth.*
 
@@ -669,7 +669,7 @@ main() {
 
 ##### 2.2.6 判断字符类型
 
-```
+```cangjie
 /**
 * 判断字符是否为模糊宽度字符
 *
@@ -689,7 +689,7 @@ public func isNeutralWidth(r: Rune): Bool
 
 示例代码如下：
 
-```
+```cangjie
 // API Demo 11
 import tabulate4cj.runewidth.*
 

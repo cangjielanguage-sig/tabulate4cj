@@ -235,7 +235,7 @@ let sc = StartClass()
 public func handleEnv() {
     let env = os.getEnv("RUNEWIDTH_EASTASIAN") ?? ""
     var eastAsianWidth = false
-    var strictEmojiNeutral = true
+    // var strictEmojiNeutral = true
     if (env == "") {
         eastAsianWidth = isEastAsian()
     } else {

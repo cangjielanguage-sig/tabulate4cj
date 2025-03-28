@@ -3,8 +3,9 @@ package tabulate4cj.runewidth
 import std.regex.*
 import std.os
 import std.collection.*
-
+@When[os == "Linux"]
 var reLoc = ##"^[a-z][a-z][a-z]?(?:_[A-Z][A-Z])?\.(.+)"##
+@When[os == "Linux"]
 let mblenTable = HashMap<String, Int64>(
     ("utf-8", 6),
     ("utf8", 6),

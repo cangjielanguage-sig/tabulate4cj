@@ -7,7 +7,6 @@
 <img alt="" src="https://img.shields.io/badge/release-v1.0.0-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/cjc-v0.53.18-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/cjcov-98.5%25-brightgreen" style="display: inline-block;" />
-<!-- <img alt="" src="https://img.shields.io/badge/domain-HOS/Cloud-brightgreen" style="display: inline-block;" /> -->
 </p>
 
 
@@ -62,7 +61,7 @@ tabulate4cj
 
 ### 接口说明
 
-主要类和函数接口说明如下，详见 [API](https://gitcode.com/Fufish_SKP/tabulate4cj/blob/main/doc/feature_api.md)
+主要类和函数接口说明如下，详见 [API](https://gitcode.com/Fufish_SKP/tabulate4cj/blob/master/doc/feature_api.md)
 
 
 ## 使用说明
@@ -208,7 +207,7 @@ main(): Int64 {
 
 执行结果如下：
 
-```shell
+```
 字符串显示宽度：{15}
 
 填充后的字符串：{      abcd}
@@ -248,7 +247,7 @@ main(): Int64 {
 
 执行结果如下：
 
-```shell
+```
 [👍, 🏼]
 [!]
 ```

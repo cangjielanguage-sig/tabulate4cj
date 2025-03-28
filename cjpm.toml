@@ -2,7 +2,7 @@
   cangjie_toml = { git = "https://gitcode.com/PermissionDog/cangjie_toml.git" }
 [package]
   cjc-version = "0.53.18"
-  compile-option = "-Woff unused"
+  compile-option = ""
   description = "tabulate4cj"
   link-option = ""
   name = "tabulate4cj"
