@@ -17,6 +17,8 @@ tabulate4cj 可以帮助你更轻松地打印出美观的文本表格，支持�
 
 本项目基于Go版本的(https://github.com/bndr/gotabulate)和(https://github.com/rivo/uniseg)在仓颉语言的基础上，进行开发和改进。
 
+测试文件受项目[cjfs](https://gitcode.com/PermissionDog/cjfs)的测试文件启发，引入了项目作者[@PermissionDog](https://gitcode.com/PermissionDog)参与开发的[Cangjie Toml](https://gitcode.com/PermissionDog/cangjie_toml)项目，实现了引入该项目时也可获取测试用例文件路径的通用方法。
+
 ### 项目特性
 
 - **支持多种表格样式**：实现了设置多种表格样式、对齐方式、表格标题等属性进行表格生成的功能。
