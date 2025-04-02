@@ -162,7 +162,7 @@ public class Condition {
             if (width + chWidth > w) {
                 if (width < w) {
                     (_, pos) = g.positions()
-                    for (i in 0..(width + chWidth - w)) {
+                    for (_ in 0..(width + chWidth - w)) {
                         tprefix += " "
                     }
                 // tprefix += Repeat(" ", width + chWidth - w)
@@ -230,7 +230,7 @@ public class StartClass {
 }
 
 let defaultCondition = Condition(false, true)
-let sc = StartClass()
+let _ = StartClass()
 
 public func handleEnv() {
     let env = os.getEnv("RUNEWIDTH_EASTASIAN") ?? ""

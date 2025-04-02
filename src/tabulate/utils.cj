@@ -23,7 +23,7 @@ func createFromHashMap(data: HashMap<String, Array<String>>): (Array<String>, Ar
     let headers = ArrayList<String>(data.size)
     let graph = ArrayList<ArrayList<String>>(
         lineMaxSize,
-        {x => ArrayList<String>(rowMaxSize, {x => ""})}
+        {_ => ArrayList<String>(rowMaxSize, {_ => ""})}
     )
 
     var i = 0

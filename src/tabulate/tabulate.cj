@@ -109,9 +109,9 @@ const MIN_PADDING = 5
    对齐方式泛型
    左对齐，居中，右对齐
  */
-const left = "left"
-const center = "center"
-const right = "right"
+// const left = "left"
+// const center = "center"
+// const right = "right"
 
 public class TabulateRow {
     public let elements: Array<String>
@@ -133,7 +133,7 @@ public class WriteBuffer {
     }
 
     public func write(str: String, count: Int64) {
-        for (i in 0..count) {
+        for (_ in 0..count) {
             buffer.append(str)
         }
     }
@@ -148,9 +148,9 @@ public class Tabulate {
     public var headers: Array<String> = []
     private var condition: Option<Condition> = None
     private var title: String = ""
-    private var titleAlign: String = left
+    private var titleAlign: String = "left"
     private var tableFormat: TableFormat = TableFormat()
-    private var align: String = right
+    private var align: String = "right"
     private var emptyVar: String = ""
     private var hideLines: Array<String> = []
     private var maxSize: Int64 = 30
@@ -306,7 +306,7 @@ public class Tabulate {
         if (this.headers.size < this.data[0].elements.size) {
             let diff: Int64 = this.data[0].elements.size - this.headers.size
             let paddedHeader = ArrayList<String>(this.data[0].elements.size)
-            for (i in 0..diff) {
+            for (_ in 0..diff) {
                 paddedHeader.append("")
             }
             for (e in this.headers) {
@@ -387,7 +387,7 @@ public class Tabulate {
 
     // Calculate the max column width for each element
     private func getWidth(headers: Array<String>, data: Array<TabulateRow>): Array<Int64> {
-        let widths = ArrayList<Int64>(headers.size, {x: Int64 => 0})
+        let widths = ArrayList<Int64>(headers.size, {_: Int64 => 0})
         var currentMax = this.emptyVar.size
         for (i in 0..headers.size) {
             currentMax = max(stringWidthByCondition(headers[i]), this.emptyVar.size)
@@ -411,7 +411,7 @@ public class Tabulate {
     }
 
     // SetTitle sets the title of the table can also accept a second string to define an alignment for the title
-    public func setTitle(title: String, align!: String = left): Tabulate {
+    public func setTitle(title: String, align!: String = "left"): Tabulate {
         this.title = title
         this.titleAlign = align
         return this
@@ -546,7 +546,7 @@ public class Tabulate {
         var index = 0
         while (index <= this.data.size) {
             let elements = next.elements
-            let newElements = ArrayList<String>(elements.size, {x: Int64 => ""})
+            let newElements = ArrayList<String>(elements.size, {_: Int64 => ""})
 
             var i = 0
             for (e in elements) {
