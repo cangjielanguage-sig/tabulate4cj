@@ -3,13 +3,6 @@
 </div>
 
 
-<p align="center">
-<img alt="" src="https://img.shields.io/badge/release-v1.0.0-brightgreen" style="display: inline-block;" />
-<img alt="" src="https://img.shields.io/badge/cjc-v0.53.18-brightgreen" style="display: inline-block;" />
-<img alt="" src="https://img.shields.io/badge/cjcov-98.5%25-brightgreen" style="display: inline-block;" />
-</p>
-
-
 
 ## 介绍
 

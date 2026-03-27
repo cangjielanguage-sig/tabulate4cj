@@ -1,7 +1,7 @@
 package tabulate4cj.runewidth
 
 import std.regex.*
-import std.os
+import std.env.*
 import std.collection.*
 @When[os == "Linux"]
 var reLoc = ##"^[a-z][a-z][a-z]?(?:_[A-Z][A-Z])?\.(.+)"##
@@ -31,7 +31,7 @@ public func isEastAsianLinux(locale: String): Bool {
     var r = rule.matcher(locale).findAll() ?? Array<MatchData>()
 
     if (r.size == 1) {
-        let mstr = r[0].matchStr()
+        let mstr = r[0].matchString()
         let pointPos = mstr.indexOf(".") ?? 0
         charset = mstr[pointPos + 1..].toAsciiLower()
     }
@@ -64,12 +64,12 @@ public func isEastAsianLinux(locale: String): Bool {
 // IsEastAsian return true if the current locale is CJK
 @When[os == "Linux"]
 public func isEastAsian(): Bool {
-    var locale = os.getEnv("LC_ALL") ?? ""
+    var locale = getVariable("LC_ALL") ?? ""
     if (locale == "") {
-        locale = os.getEnv("LC_CTYPE") ?? ""
+        locale = getVariable("LC_CTYPE") ?? ""
     }
     if (locale == "") {
-        locale = os.getEnv("LANG") ?? ""
+        locale = getVariable("LANG") ?? ""
     }
     // ignore C locale
     if (locale == "POSIX" || locale == "C") {

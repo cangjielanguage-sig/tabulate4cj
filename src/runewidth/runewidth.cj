@@ -1,7 +1,7 @@
 package tabulate4cj.runewidth
 
 import std.collection.*
-import std.os
+import std.env.*
 import tabulate4cj.grapheme.*
 
 private func inTables(r: Rune, t: RrangeTable): Bool {
@@ -205,7 +205,7 @@ public class Condition {
         let width = this.stringWidth(s)
         let count = w - width
         if (count > 0) {
-            let b = Array<Rune>(count, item: r' ')
+            let b = Array<Rune>(count, repeat: r' ')
             return String(b) + s
         }
         return s
@@ -216,7 +216,7 @@ public class Condition {
         let width = this.stringWidth(s)
         let count = w - width
         if (count > 0) {
-            let b = Array<Rune>(count, item: r' ')
+            let b = Array<Rune>(count, repeat: r' ')
             return s + String(b)
         }
         return s
@@ -233,7 +233,7 @@ let defaultCondition = Condition(false, true)
 let _ = StartClass()
 
 public func handleEnv() {
-    let env = os.getEnv("RUNEWIDTH_EASTASIAN") ?? ""
+    let env = getVariable("RUNEWIDTH_EASTASIAN") ?? ""
     var eastAsianWidth = false
     // var strictEmojiNeutral = true
     if (env == "") {

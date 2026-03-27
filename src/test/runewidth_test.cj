@@ -1,7 +1,7 @@
 package tabulate4cj.test
 
 import tabulate4cj.runewidth.*
-import std.os
+import std.env.*
 import std.unittest.*
 import std.unittest.testmacro.*
 
@@ -310,11 +310,10 @@ public class RuneWidthTest {
 
     @TestCase
     func TestEnv() {
-        if (let Some(old) <- os.getEnv("RUNEWIDTH_EASTASIAN")) {
-            os.setEnv("RUNEWIDTH_EASTASIAN", old)
+        if (let Some(old) <- getVariable("RUNEWIDTH_EASTASIAN")) {
+            setVariable("RUNEWIDTH_EASTASIAN", old)
         }
-        // defer os.Setenv("RUNEWIDTH_EASTASIAN", old)
-        os.setEnv("RUNEWIDTH_EASTASIAN", "0")
+        setVariable("RUNEWIDTH_EASTASIAN", "0")
         handleEnv()
         @Expect(runeWidth(r'|'), 1)
     }

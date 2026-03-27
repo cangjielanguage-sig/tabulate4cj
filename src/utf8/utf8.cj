@@ -72,11 +72,7 @@ let acceptRanges = HashMap<UInt8, Range<UInt8>>(
 )
 
 public func decodeStringToBytesArray(s: String): Array<Byte> {
-    let byteArrayStream = ByteArrayStream()
-    let stringWriter = StringWriter(byteArrayStream)
-    stringWriter.write(s)
-    stringWriter.flush()
-    return byteArrayStream.bytes()
+    return s.toArray()
 }
 
 // DecodeRuneInString is like [DecodeRune] but its input is a string. If s is

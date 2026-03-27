@@ -3,7 +3,7 @@ package tabulate4cj.test
 import tabulate4cj.tabulate.*
 import std.fs.*
 import std.collection.*
-import std.format.*
+import std.convert.*
 import std.unittest.*
 import std.unittest.testmacro.*
 

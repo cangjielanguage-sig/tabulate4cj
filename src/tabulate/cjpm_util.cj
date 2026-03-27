@@ -2,11 +2,11 @@ package tabulate4cj.tabulate
 
 import cangjie_toml.cangjie_toml.*
 import std.io.*
-import std.os.*
+import std.env.*
 import std.fs.*
 import std.regex.*
 import std.collection.*
-import serialization.serialization.*
+import stdx.serialization.serialization.*
 
 class CjpmLock <: Serializable<CjpmLock> {
     public CjpmLock(
@@ -52,9 +52,7 @@ func getCjpmPath(module: String): Path {
     // toml4cj 仅支持读取扩展名为 .toml 的文件
     let cjpmLock = DataModel.fromTomlFile("cjpm.lock") |> CjpmLock.deserialize
     let commitId = cjpmLock.requires[module].commitId
-    return homeDir()
-        .info
-        .path
+    return getHomeDirectory()
         .join(Path(".cjpm"))
         .join(Path("git"))
         .join(module)
@@ -77,11 +75,11 @@ public func getRootPath(path: String, module!: String = ""): Path {
 
 public func readTable(fileName: String, fathPath!: String = "_tests"): String {
     var filePath = Path(fathPath).join(Path(fileName))
-    if (!File.exists(filePath)) {
+    if (!exists(filePath)) {
         filePath = getRootPath(filePath.toString(), module: "tabulate4cj")
     }
     var res = ""
-    try (reader = StringReader(File(filePath, Open(true, false)))) {
+    try (reader = StringReader(File(filePath, OpenMode.Read))) {
         res = reader.readToEnd()
     }
     return res

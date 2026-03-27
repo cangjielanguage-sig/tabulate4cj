@@ -5,7 +5,7 @@ import tabulate4cj.runewidth.*
 import std.collection.*
 import std.io.*
 import std.math.*
-import std.format.*
+import std.convert.*
 
 /**
 表格样式
@@ -172,7 +172,7 @@ public class Tabulate {
             b.write(" ", padding)
             b.write(el, 1)
             b.write(" ", padding)
-            padded.append(b.getString())
+            padded.add(b.getString())
         }
 
         return padded.toArray()
@@ -214,7 +214,7 @@ public class Tabulate {
         for (i in 0..paddedWidths.size) {
             let b = WriteBuffer()
             b.write(l.hline, padding[i] + MIN_PADDING)
-            cells.append(b.getString())
+            cells.add(b.getString())
         }
         let buffer = StringBuilder()
         buffer.append(l.begin)
@@ -307,10 +307,10 @@ public class Tabulate {
             let diff: Int64 = this.data[0].elements.size - this.headers.size
             let paddedHeader = ArrayList<String>(this.data[0].elements.size)
             for (_ in 0..diff) {
-                paddedHeader.append("")
+                paddedHeader.add("")
             }
             for (e in this.headers) {
-                paddedHeader.append(e)
+                paddedHeader.add(e)
             }
             this.headers = paddedHeader.toArray()
         }
@@ -320,7 +320,7 @@ public class Tabulate {
 
         let paddedWidths = ArrayList<Int64>(cols.size)
         for (i in 0..cols.size) {
-            paddedWidths.append(cols[i] + MIN_PADDING * this.tableFormat.padding)
+            paddedWidths.add(cols[i] + MIN_PADDING * this.tableFormat.padding)
         }
 
         // Calculate total width of the table
@@ -332,47 +332,47 @@ public class Tabulate {
         // Start appending lines
         if (this.title.size > 1) {
             if (!inSlice("aboveTitle", this.hideLines)) {
-                lines.append(this.buildLine(paddedWidths.toArray(), cols, this.tableFormat.lineTop))
+                lines.add(this.buildLine(paddedWidths.toArray(), cols, this.tableFormat.lineTop))
             }
             let savedAlign = this.align
             if (this.titleAlign.size > 0) {
                 this.setAlign(this.titleAlign) // Temporary replace alignment with the title alignment
             }
-            lines.append(this.buildRow([this.title], [totalWidth], this.tableFormat.titleRow))
+            lines.add(this.buildRow([this.title], [totalWidth], this.tableFormat.titleRow))
             this.setAlign(savedAlign)
         }
 
         // Append top line if not hidden
         if (!inSlice("top", this.hideLines)) {
-            lines.append(this.buildLine(paddedWidths.toArray(), cols, this.tableFormat.lineTop))
+            lines.add(this.buildLine(paddedWidths.toArray(), cols, this.tableFormat.lineTop))
         }
 
         // Add Header
-        lines.append(
+        lines.add(
             this.buildRow(this.padRow(this.headers, this.tableFormat.padding).toArray(), paddedWidths.toArray(),
                 this.tableFormat.headerRow))
 
         // Add Line Below Header if not hidden
         if (!inSlice("belowheader", this.hideLines)) {
-            lines.append(this.buildLine(paddedWidths.toArray(), cols, this.tableFormat.lineBelowHeader))
+            lines.add(this.buildLine(paddedWidths.toArray(), cols, this.tableFormat.lineBelowHeader))
         }
 
         // Add Data Rows
         var index = 0
         for (element in this.data) {
-            lines.append(
+            lines.add(
                 this.buildRow(this.padRow(element.elements, this.tableFormat.padding), paddedWidths.toArray(),
                     this.tableFormat.dataRow))
             if (!this.denseMode && index < this.data.size - 1) {
                 if (element.continuos != true && !inSlice("betweenLine", this.hideLines)) {
-                    lines.append(this.buildLine(paddedWidths.toArray(), cols, this.tableFormat.lineBetweenRows))
+                    lines.add(this.buildLine(paddedWidths.toArray(), cols, this.tableFormat.lineBetweenRows))
                 }
             }
             index++
         }
         // Add Line Below Header if not hidden
         if (!inSlice("bottomLine", this.hideLines)) {
-            lines.append(this.buildLine(paddedWidths.toArray(), cols, this.tableFormat.lineBottom))
+            lines.add(this.buildLine(paddedWidths.toArray(), cols, this.tableFormat.lineBottom))
         }
         // Join lines
 
@@ -569,14 +569,14 @@ public class Tabulate {
             }
 
             if (next.continuos) {
-                arr.append(next)
+                arr.add(next)
                 next = TabulateRow(newElements.toArray())
                 index--
             } else if (index + 1 < this.data.size) {
-                arr.append(next)
+                arr.add(next)
                 next = this.data[index + 1]
             } else if (index >= this.data.size) {
-                arr.append(next)
+                arr.add(next)
             }
             index++
         }
@@ -596,7 +596,7 @@ class ToStringStringable <: Stringable {
 }
 
 class FormatterStringable <: Stringable {
-    FormatterStringable(public let value: Formatter, public let formateString: String) {}
+    FormatterStringable(public let value: Formattable, public let formateString: String) {}
     public func mapToString(): String {
         return value.format(formateString)
     }
@@ -617,9 +617,9 @@ public func create<T>(
         p: Array<T> => p |>
             map {
             q: T => match (q) {
-                case v: Formatter => FormatterStringable(v, numFormat).mapToString()
+                case v: Formattable => FormatterStringable(v, numFormat).mapToString()
                 case v: ToString => ToStringStringable(v).mapToString()
-                case _ => throw Exception("expect type is ToString OR Formatter")
+                case _ => throw Exception("expect type is ToString OR Formattable")
             }
         } |> collectArray<String>
     } |> collectArray<Array<String>>
@@ -645,7 +645,7 @@ public func create<K, V>(
             p[1] |>
                 map {
                 q: V => match (q) {
-                    case v: Formatter => FormatterStringable(v, numFormat).mapToString()
+                    case v: Formattable => FormatterStringable(v, numFormat).mapToString()
                     case v: ToString => ToStringStringable(v).mapToString()
                     case _ => throw Exception("expect type is Array<Array<ToString>>")
                 }

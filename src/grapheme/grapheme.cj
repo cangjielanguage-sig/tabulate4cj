@@ -173,8 +173,8 @@ public class Grapheme {
 public func newGraphemes(s: String): Grapheme {
     let runarr = s.toRuneArray()
     let l = runarr.size
-    let codePoints = Array<Rune>(l, item: r' ')
-    let indices = Array<Int64>(l + 1, item: 0)
+    let codePoints = Array<Rune>(l, repeat: r' ')
+    let indices = Array<Int64>(l + 1, repeat: 0)
     var i = 0
     // 字符的字节位置
     var pos = 0

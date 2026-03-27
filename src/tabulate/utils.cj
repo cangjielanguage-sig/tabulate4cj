@@ -1,7 +1,7 @@
 package tabulate4cj.tabulate
 
 import std.collection.*
-import std.format.*
+import std.convert.*
 
 // Create normalized Array from strings
 public func createFromString(data: Array<Array<String>>): Array<TabulateRow> {
@@ -10,7 +10,7 @@ public func createFromString(data: Array<Array<String>>): Array<TabulateRow> {
         if (d.size < 1) {
             break
         }
-        rows.append(TabulateRow(d.toArray()))
+        rows.add(TabulateRow(d.toArray()))
     }
     return rows.toArray()
 }
@@ -28,7 +28,7 @@ func createFromHashMap(data: HashMap<String, Array<String>>): (Array<String>, Ar
 
     var i = 0
     for (tup in data) {
-        headers.append(tup[0])
+        headers.add(tup[0])
         var j = 0
         for (e in tup[1]) {
             graph[j][i] = e

@@ -8,3 +8,4 @@ cjpm.lock
 *.gcno
 *.gcda
 .arts/
+cangjie-repo.toml
